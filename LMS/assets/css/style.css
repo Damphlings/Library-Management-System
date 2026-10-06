@@ -1,0 +1,1142 @@
+/*
+|--------------------------------------------------------------------------
+| GLOBAL STYLES
+|--------------------------------------------------------------------------
+*/
+
+:root {
+    color-scheme: dark;
+
+    --bg: #101218;
+    --sidebar: #0b0d12;
+    --surface: #181b23;
+    --surface-2: #1f232d;
+    --surface-3: #292e3b;
+    --row-hover: rgba(255, 255, 255, 0.03);
+
+    --border: #2a2f3b;
+    --border-soft: #222631;
+    --border-strong: #3a4151;
+
+    --text: #e8eaf0;
+    --text-soft: #c4c9d4;
+    --text-muted: #9aa1b0;
+    --text-faint: #6f7686;
+
+    --accent: #2ec4b6;
+    --accent-hover: #4fd9cb;
+    --accent-ink: #04201d;
+    --accent-soft: rgba(46, 196, 182, 0.14);
+    --accent-soft-2: rgba(46, 196, 182, 0.26);
+    --accent-ring: rgba(46, 196, 182, 0.22);
+
+    --ok: #5fdc8f;
+    --ok-soft: rgba(95, 220, 143, 0.14);
+    --ok-solid: #1c8f4e;
+    --warn: #f6c453;
+    --warn-soft: rgba(246, 196, 83, 0.14);
+    --bad: #f58b8b;
+    --bad-soft: rgba(245, 139, 139, 0.14);
+    --bad-soft-2: rgba(245, 139, 139, 0.28);
+    --bad-solid: #d64550;
+    --bad-solid-hover: #b83842;
+
+    --btn-grey: #343a4a;
+    --btn-grey-hover: #434b5e;
+}
+
+/* Form controls on a dark surface */
+input,
+select,
+textarea {
+    background: var(--surface-2);
+    color: var(--text);
+    border-color: var(--border-strong);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-faint);
+}
+
+option {
+    background: var(--surface-2);
+    color: var(--text);
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+::selection {
+    background: var(--accent-soft-2);
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+
+    line-height: 1.4;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.lms-container {
+    display: flex;
+
+    width: 100%;
+    min-height: 100vh;
+
+    /*
+    IMPORTANT:
+    Do NOT use align-items: stretch here.
+    Otherwise the sidebar will stretch to the full
+    height of long pages such as Activity Logs.
+    */
+
+    align-items: flex-start;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    width: 260px;
+    min-width: 260px;
+
+    /*
+    Keep sidebar exactly the height of the viewport.
+    It will no longer stretch when the page gets longer.
+    */
+
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+
+    background: var(--sidebar);
+    color: var(--text);
+
+    padding: 28px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    box-shadow:
+        none;
+
+    /*
+    Keep the sidebar visible while the main page scrolls.
+    */
+
+    position: sticky;
+
+    top: 0;
+
+    align-self: flex-start;
+
+    z-index: 100;
+
+    /*
+    Prevent the sidebar itself from becoming a second
+    scrolling page.
+    */
+
+    overflow: hidden;
+    border-right: 1px solid var(--border-soft);
+}
+
+
+/* =========================================================
+   SIDEBAR MENU
+========================================================= */
+
+.sidebar-menu {
+    margin-top: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.menu-title {
+    font-size: 11px;
+
+    color: rgba(255, 255, 255, 0.6);
+
+    margin-top: 6px;
+    margin-bottom: 6px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.sidebar-menu a {
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    padding: 8px 10px;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition:
+        background 0.12s ease,
+        color 0.12s ease;
+}
+
+.sidebar-menu a:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-menu a .menu-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    flex-shrink: 0;
+}
+
+.sidebar-menu a.active {
+    background: var(--accent);
+
+    color: var(--accent-ink);
+
+    padding-left: 12px;
+
+    font-weight: 600;
+}
+
+.sidebar-menu a.active .menu-icon {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
+
+.sidebar-bottom {
+    margin-top: auto;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    /*
+    Keep the bottom section inside the viewport.
+    */
+
+    flex-shrink: 0;
+}
+
+.sidebar-user {
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: var(--accent-soft);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--accent);
+
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.user-info strong {
+    display: block;
+
+    color: var(--text);
+
+    font-size: 13px;
+}
+
+.user-info span {
+    color: var(--text-muted);
+
+    font-size: 12px;
+}
+
+.logout-link {
+    color: rgba(255, 255, 255, 0.9);
+
+    display: inline-block;
+
+    margin-top: 6px;
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+    flex: 1;
+
+    width: auto;
+
+    min-width: 0;
+
+    /*
+    Main content is allowed to become taller than the viewport.
+    This is where the normal page scrolling should happen.
+    */
+
+    min-height: 100vh;
+
+    background: var(--bg);
+
+    padding: 0;
+}
+
+
+/* =========================================================
+   DASHBOARD CONTENT
+========================================================= */
+
+.content {
+    width: 100%;
+
+    padding: 32px;
+}
+
+
+/* =========================================================
+   WELCOME SECTION
+========================================================= */
+
+.welcome {
+    margin-bottom: 28px;
+}
+
+.welcome h2 {
+    color: var(--text);
+
+    font-size: 26px;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    margin-bottom: 6px;
+}
+
+.welcome p {
+    color: var(--text-muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   DASHBOARD STATISTICS
+========================================================= */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 28px;
+}
+
+.stat-card {
+    background: var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    min-height: 110px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.4);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.stat-card h3 {
+    color: var(--text-muted);
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    margin-bottom: 7px;
+}
+
+.stat-card .number {
+    color: var(--text);
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+.stat-icon {
+    width: 46px;
+    height: 46px;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background: var(--accent-soft);
+
+    color: var(--accent);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
+}
+
+.stat-card.overdue .stat-icon {
+    background: var(--warn-soft);
+
+    color: var(--warn);
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.quick-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 28px;
+}
+
+.quick-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding:
+        9px 16px;
+
+    border-radius: 7px;
+
+    background: var(--surface-3);
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+    border: 1px solid var(--border);
+}
+
+.quick-btn:hover {
+    background: var(--border);
+
+    transform: translateY(-1px);
+}
+
+.quick-btn.yellow {
+    background: var(--accent);
+
+    color: var(--accent-ink);
+}
+
+.quick-btn.yellow:hover {
+    background: var(--accent-hover);
+}
+
+
+/* =========================================================
+   DASHBOARD TWO-COLUMN GRID
+========================================================= */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(300px, 1fr);
+
+    gap: 20px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   COMMON CARD
+========================================================= */
+
+.card {
+    background: var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+    min-height: 62px;
+
+    padding:
+        17px 20px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.card-header h3 {
+    color: var(--text);
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+.view-all {
+    color: var(--accent);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.view-all:hover {
+    color: var(--accent-hover);
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 600px;
+}
+
+th {
+    background: var(--surface-2);
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.3px;
+
+    padding:
+        12px 15px;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+td {
+    padding:
+        13px 15px;
+
+    border-top:
+        1px solid var(--border-soft);
+
+    font-size: 13px;
+
+    color: var(--text-soft);
+
+    white-space: nowrap;
+
+    vertical-align: middle;
+}
+
+td strong {
+    color: var(--text);
+
+    font-weight: 600;
+}
+
+td small {
+    color: var(--text-faint);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.status-returned {
+    background: var(--ok-soft);
+
+    color: var(--ok);
+}
+
+.status-borrowed {
+    background: var(--accent-soft);
+
+    color: var(--accent);
+}
+
+.status-overdue {
+    background: var(--warn-soft);
+
+    color: var(--warn);
+}
+
+.status-default {
+    background: var(--surface-3);
+
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   ACTIVITY LOG
+========================================================= */
+
+.activity-list {
+    padding:
+        5px 20px 15px;
+}
+
+.activity-item {
+    padding:
+        15px 0;
+
+    border-bottom:
+        1px solid var(--border-soft);
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-action {
+    color: var(--text);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.activity-description {
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    line-height: 1.45;
+
+    margin-top: 4px;
+}
+
+.activity-date {
+    color: var(--text-faint);
+
+    font-size: 11px;
+
+    margin-top: 6px;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty {
+    padding:
+        35px 20px;
+
+    text-align: center;
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   BOOKS PAGE
+========================================================= */
+
+.books-page {
+    padding: 10px 0;
+}
+
+.page-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 16px;
+}
+
+.add-book-button {
+    background: var(--accent);
+
+    color: var(--accent-ink);
+
+    padding:
+        8px 12px;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   ALERTS
+========================================================= */
+
+.alert {
+    padding: 12px;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    gap: 12px;
+
+    align-items: flex-start;
+
+    margin-bottom: 12px;
+}
+
+.alert-success {
+    background: var(--ok-soft);
+
+    color: var(--ok);
+}
+
+.alert-warning {
+    background: var(--warn-soft);
+
+    color: var(--warn);
+}
+
+.alert-error {
+    background: var(--bad-soft);
+
+    color: var(--bad);
+}
+
+.close-message {
+    margin-left: auto;
+
+    background: transparent;
+
+    border: 0;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   BOOK PAGE STATISTICS
+========================================================= */
+
+.stats-grid .stat-card {
+    min-height: auto;
+}
+
+.stat-card span {
+    display: block;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.lms-footer {
+    margin-top: 18px;
+
+    padding:
+        12px 18px;
+
+    background: var(--surface);
+
+    border-top:
+        1px solid var(--border);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
+
+.mobile-menu-btn {
+    display: none;
+
+    background: transparent;
+
+    border: 0;
+
+    font-size: 20px;
+
+    color: var(--text-muted);
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVE — LARGE TABLETS
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLETS
+========================================================= */
+
+@media (max-width: 992px) {
+
+    /*
+    Mobile/tablet sidebar becomes an overlay.
+    */
+
+    .sidebar {
+        position: fixed;
+
+        left: -320px;
+
+        top: 0;
+        bottom: 0;
+
+        width: 260px;
+        min-width: 260px;
+
+        height: 100vh;
+        min-height: 100vh;
+        max-height: 100vh;
+
+        z-index: 1000;
+
+        transition:
+            left 0.25s ease;
+
+        /*
+        Allow the mobile sidebar to contain its
+        own menu if necessary.
+        */
+
+        overflow-y: auto;
+        overflow-x: hidden;
+    background: var(--sidebar);
+    box-shadow: none;
+    border-right: 1px solid var(--border-soft);
+}
+
+    .sidebar.show {
+        left: 0;
+    }
+
+
+    /*
+    On tablet/mobile the main container no longer
+    needs flex layout because the sidebar is an overlay.
+    */
+
+    .lms-container {
+        display: block;
+
+        width: 100%;
+
+        min-height: 100vh;
+    }
+
+    .main-content {
+        width: 100%;
+
+        min-height: 100vh;
+    }
+
+    .mobile-menu-btn {
+        display: inline-block;
+    }
+
+    .content {
+        padding: 25px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL TABLETS
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .content {
+        padding: 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .quick-actions {
+        gap: 8px;
+    }
+
+    .quick-btn {
+        flex: 1 1 auto;
+    background: var(--surface-3);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+    .content {
+        padding: 16px;
+    }
+
+    .welcome h2 {
+        font-size: 22px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        min-height: 95px;
+    }
+
+    .quick-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .quick-btn {
+        width: 100%;
+    background: var(--surface-3);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-header {
+        padding:
+            15px;
+    }
+
+    .activity-list {
+        padding:
+            5px 15px 15px;
+    }
+
+}
+
+
+/* =========================================================
+   UTILITY
+========================================================= */
+
+.hidden {
+    display: none !important;
+}

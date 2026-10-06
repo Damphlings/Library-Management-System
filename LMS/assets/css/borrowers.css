@@ -1,0 +1,953 @@
+/* Theme tokens (same values as style.css, repeated so this page stays dark on its own) */
+:root {
+    color-scheme: dark;
+    --bg: #101218; --surface: #181b23; --surface-2: #1f232d; --surface-3: #292e3b;
+    --row-hover: rgba(255, 255, 255, 0.03);
+    --border: #2a2f3b; --border-soft: #222631; --border-strong: #3a4151;
+    --text: #e8eaf0; --text-soft: #c4c9d4; --text-muted: #9aa1b0; --text-faint: #6f7686;
+    --accent: #2ec4b6; --accent-hover: #4fd9cb; --accent-ink: #04201d;
+    --accent-soft: rgba(46, 196, 182, 0.14); --accent-soft-2: rgba(46, 196, 182, 0.26);
+    --accent-ring: rgba(46, 196, 182, 0.22);
+    --ok: #5fdc8f; --ok-soft: rgba(95, 220, 143, 0.14);
+    --bad: #f58b8b; --bad-soft: rgba(245, 139, 139, 0.14); --bad-soft-2: rgba(245, 139, 139, 0.28);
+    --bad-solid: #d64550;
+    --btn-grey: #343a4a; --btn-grey-hover: #434b5e;
+}
+
+/* =========================================================
+   BORROWERS PAGE
+========================================================= */
+
+.borrowers-page {
+    padding: 0;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.borrowers-page .page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 24px;
+}
+
+.borrowers-page .page-heading h1,
+.borrowers-page .page-heading h2 {
+    margin: 0 0 5px;
+
+    font-size: 26px;
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+.borrowers-page .page-heading p {
+    margin: 0;
+
+    font-size: 14px;
+
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 15px;
+
+    background: var(--surface-2);
+
+    border: 1px solid var(--border);
+
+    border-radius: 7px;
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: .2s ease;
+
+    white-space: nowrap;
+}
+
+.back-button:hover {
+    background: var(--surface-3);
+
+    border-color: var(--border-strong);
+}
+
+
+/* =========================================================
+   ADD BORROWER BUTTON
+========================================================= */
+
+.add-book-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    background: var(--accent);
+
+    color: var(--accent-ink);
+
+    padding: 11px 17px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: .2s ease;
+}
+
+.add-book-button:hover {
+    background: var(--accent-hover);
+
+    transform: translateY(-1px);
+}
+
+.add-book-button span {
+    font-size: 18px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   ALERTS
+========================================================= */
+
+.borrowers-page .alert {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+
+    padding: 14px 16px;
+
+    border-radius: 8px;
+}
+
+.borrowers-page .alert-error {
+    background: var(--bad-soft);
+
+    border-left: 4px solid var(--bad);
+
+    color: var(--bad);
+}
+
+.borrowers-page .alert-icon {
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: var(--bad-solid);
+
+    color: #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.borrowers-page .alert strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 12px;
+}
+
+.borrowers-page .alert p {
+    margin: 0;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.borrowers-page .form-card {
+    width: 100%;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================================
+   FORM CARD HEADER
+========================================================= */
+
+.borrowers-page .form-card-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 22px 25px;
+
+    background: var(--surface-2);
+
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+}
+
+.borrowers-page .header-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border-radius: 8px;
+
+    font-size: 22px;
+}
+
+.borrowers-page .form-card-header h3 {
+    margin: 0 0 4px;
+
+    color: var(--text);
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.borrowers-page .form-card-header p {
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 11px;
+
+    opacity: .8;
+}
+
+
+/* =========================================================
+   FORM SECTION
+========================================================= */
+
+.borrowers-page .form-section {
+    padding: 25px;
+
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.borrowers-page .form-section h4 {
+    margin: 0 0 20px;
+
+    color: var(--text);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.borrowers-page .form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.borrowers-page .form-group {
+    min-width: 0;
+}
+
+.borrowers-page .form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--text);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.borrowers-page .required {
+    color: var(--bad);
+}
+
+
+/* =========================================================
+   FORM INPUTS
+========================================================= */
+
+.borrowers-page .form-group input,
+.borrowers-page .form-group select,
+.borrowers-page .form-group textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    border: 1px solid var(--border-strong);
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    background: var(--surface-2);
+
+    color: var(--text-soft);
+
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease;
+}
+
+
+/* INPUTS */
+
+.borrowers-page .form-group input,
+.borrowers-page .form-group select {
+    height: 43px;
+
+    padding: 10px 12px;
+}
+
+
+/* TEXTAREA */
+
+.borrowers-page .form-group textarea {
+    min-height: 110px;
+
+    padding: 10px 12px;
+
+    resize: vertical;
+}
+
+
+/* FOCUS */
+
+.borrowers-page .form-group input:focus,
+.borrowers-page .form-group select:focus,
+.borrowers-page .form-group textarea:focus {
+
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 2px var(--accent-ring);
+}
+
+
+/* PLACEHOLDER */
+
+.borrowers-page .form-group input::placeholder,
+.borrowers-page .form-group textarea::placeholder {
+    color: var(--text-faint);
+}
+
+
+/* SMALL HELP TEXT */
+
+.borrowers-page .form-group small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   STATUS NOTICE
+========================================================= */
+
+.borrowers-page .status-notice {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin: 20px 25px 0;
+
+    padding: 14px;
+
+    background: var(--surface-2);
+
+    border-left: 4px solid var(--border-strong);
+
+    border-radius: 6px;
+}
+
+.borrowers-page .notice-icon {
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: var(--btn-grey);
+
+    color: var(--text);
+
+    border-radius: 50%;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.borrowers-page .status-notice strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--text);
+
+    font-size: 12px;
+}
+
+.borrowers-page .status-notice p {
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   REQUIRED NOTE
+========================================================= */
+
+.borrowers-page .required-note {
+    padding: 18px 25px 0;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.borrowers-page .form-actions {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 20px 25px;
+}
+
+
+/* =========================================================
+   FORM BUTTONS
+========================================================= */
+
+.borrowers-page .btn {
+    min-height: 42px;
+
+    padding: 0 20px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .15s ease;
+}
+
+
+/* PRIMARY */
+
+.borrowers-page .btn-primary {
+    background: var(--accent);
+
+    color: var(--accent-ink);
+}
+
+.borrowers-page .btn-primary:hover {
+    background: var(--accent-hover);
+}
+
+
+/* SECONDARY */
+
+.borrowers-page .btn-secondary {
+    background: var(--btn-grey);
+
+    color: var(--text);
+}
+
+.borrowers-page .btn-secondary:hover {
+    background: var(--btn-grey-hover);
+}
+
+
+/* DISABLED */
+
+.borrowers-page .btn:disabled {
+    opacity: .6;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   TABLE CARD
+========================================================= */
+
+.table-card {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================================
+   TABLE CARD HEADER
+========================================================= */
+
+.table-card-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.table-card-header h3 {
+    margin: 0 0 4px;
+
+    color: var(--text);
+
+    font-size: 17px;
+}
+
+.table-card-header p {
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 900px;
+}
+
+.data-table th {
+    padding: 13px 16px;
+
+    background: var(--surface-2);
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-align: left;
+
+    text-transform: uppercase;
+
+    letter-spacing: .4px;
+
+    white-space: nowrap;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.data-table td {
+    padding: 15px 16px;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+
+    border-bottom: 1px solid var(--border-soft);
+
+    vertical-align: middle;
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+    background: var(--row-hover);
+}
+
+.data-table td strong {
+    color: var(--text);
+}
+
+
+/* =========================================================
+   STUDENT ID
+========================================================= */
+
+.student-id {
+    font-size: 13px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.borrower-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.status-active {
+    background: var(--ok-soft);
+
+    color: var(--ok);
+}
+
+.status-inactive {
+    background: var(--surface-3);
+
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.borrower-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+.borrower-actions form {
+    margin: 0;
+}
+
+
+/* =========================================================
+   TABLE BUTTONS
+========================================================= */
+
+.borrower-actions .btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 34px;
+
+    padding: 0 11px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .15s ease;
+}
+
+.borrower-actions .btn-secondary {
+    background: var(--accent-soft);
+
+    color: var(--accent);
+}
+
+.borrower-actions .btn-secondary:hover {
+    background: var(--accent-soft-2);
+}
+
+.borrower-actions .btn-danger {
+    background: var(--bad-soft);
+
+    color: var(--bad);
+}
+
+.borrower-actions .btn-danger:hover {
+    background: var(--bad-soft-2);
+}
+
+
+/* =========================================================
+   EMPTY TABLE
+========================================================= */
+
+.empty-table {
+    padding: 60px 20px !important;
+
+    text-align: center;
+
+    color: var(--text-muted);
+}
+
+.empty-table .empty-icon {
+    font-size: 36px;
+
+    margin-bottom: 10px;
+}
+
+.empty-table strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--text-soft);
+
+    font-size: 15px;
+}
+
+.empty-table p {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .borrowers-page .page-heading {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .borrowers-page .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .borrowers-page .form-section {
+        padding: 20px;
+    }
+
+    .borrowers-page .status-notice {
+        margin-left: 20px;
+
+        margin-right: 20px;
+    }
+
+    .borrowers-page .form-actions {
+        flex-direction: column-reverse;
+
+        padding: 20px;
+    }
+
+    .borrowers-page .form-actions .btn {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .borrowers-page .page-heading {
+        flex-direction: column;
+    }
+
+    .add-book-button {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .borrowers-page .back-button {
+        width: 100%;
+    }
+
+}
+
+/* =========================================================
+   DARK TABLE (applies to any table on the borrowers page)
+========================================================= */
+
+.table-card,
+.table-card .table-wrapper,
+.borrowers-page .table-card,
+.borrowers-page .table-wrapper {
+    background: var(--surface) !important;
+    border-color: var(--border);
+    color: var(--text-soft);
+}
+
+.table-card table,
+.borrowers-page table {
+    background: transparent !important;
+    color: var(--text-soft);
+}
+
+.table-card thead,
+.table-card th,
+.borrowers-page thead,
+.borrowers-page th {
+    background: var(--surface-2) !important;
+    color: var(--text-muted) !important;
+    border-color: var(--border) !important;
+}
+
+.table-card tbody tr,
+.borrowers-page tbody tr {
+    background: transparent !important;
+}
+
+.table-card tbody tr:hover,
+.borrowers-page tbody tr:hover {
+    background: var(--row-hover) !important;
+}
+
+.table-card td,
+.borrowers-page td {
+    background: transparent !important;
+    color: var(--text-soft) !important;
+    border-color: var(--border-soft) !important;
+}
+
+.table-card td strong,
+.borrowers-page td strong {
+    color: var(--text) !important;
+}
+
+.table-card td small,
+.borrowers-page td small {
+    color: var(--text-faint) !important;
+}
+
+.table-card-header,
+.table-card .table-header {
+    background: var(--surface);
+    border-color: var(--border-soft);
+}

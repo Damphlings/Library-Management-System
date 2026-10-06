@@ -1,0 +1,638 @@
+/* =========================================================
+   ACTIVITY LOGS PAGE
+========================================================= */
+
+.logs-page {
+    width: 100%;
+    padding: 10px 0;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+.logs-page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.logs-page-heading h1 {
+    margin: 0;
+    color: var(--text);
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.logs-page-heading p {
+    margin-top: 5px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.logs-toolbar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 20px;
+}
+
+.logs-filter-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.logs-search {
+    flex: 1;
+    min-width: 260px;
+    height: 42px;
+    position: relative;
+}
+
+.logs-search-icon {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 18px;
+    pointer-events: none;
+}
+
+.logs-search input {
+    width: 100%;
+    height: 42px;
+
+    padding:
+        0
+        14px
+        0
+        40px;
+
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    background: var(--surface-2);
+}
+
+.logs-search input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-ring);
+}
+
+
+/* =========================================================
+   FILTER SELECT
+========================================================= */
+
+.logs-filter-select {
+    width: 180px;
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+
+    background: var(--surface-2);
+
+    color: var(--text-soft);
+
+    font-family: inherit;
+    font-size: 13px;
+
+    outline: none;
+}
+
+.logs-filter-select:focus {
+    border-color: var(--accent);
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.logs-button {
+    height: 42px;
+
+    padding:
+        0
+        17px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    border: none;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+}
+
+.logs-button-primary {
+    background: var(--accent);
+    color: var(--accent-ink);
+}
+
+.logs-button-primary:hover {
+    background: var(--accent-hover);
+}
+
+.logs-button-reset {
+    background: var(--btn-grey);
+    color: var(--text);
+}
+
+.logs-button-reset:hover {
+    background: var(--btn-grey-hover);
+}
+
+.logs-button-danger {
+    background: var(--bad-solid);
+    color: #ffffff;
+}
+
+.logs-button-danger:hover {
+    background: var(--bad-solid-hover);
+}
+
+
+/* =========================================================
+   LOG CARD
+========================================================= */
+
+.logs-card {
+    width: 100%;
+
+    background: var(--surface);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.logs-card-header {
+    padding: 18px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid
+        var(--border);
+}
+
+.logs-card-header h2 {
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.logs-card-header p {
+    margin-top: 3px;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+}
+
+.logs-count {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.logs-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.logs-table th {
+    background: var(--surface-2);
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.3px;
+
+    text-align: left;
+
+    padding: 13px 15px;
+
+    white-space: nowrap;
+}
+
+.logs-table td {
+    padding: 14px 15px;
+
+    border-top:
+        1px solid
+        var(--border-soft);
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+
+    vertical-align: middle;
+}
+
+.logs-table tbody tr:hover {
+    background: var(--row-hover);
+}
+
+
+/* =========================================================
+   LOG NUMBER
+========================================================= */
+
+.log-number {
+    color: var(--text-faint);
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   USER
+========================================================= */
+
+.log-user {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.log-user strong {
+    color: var(--text);
+    font-size: 13px;
+}
+
+.log-user small {
+    color: var(--text-faint);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   ACTION BADGES
+========================================================= */
+
+.log-action {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        5px
+        9px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* LOGIN */
+
+.action-login {
+    background: var(--ok-soft);
+    color: var(--ok);
+}
+
+
+/* LOGOUT */
+
+.action-logout {
+    background: var(--surface-3);
+    color: var(--text-muted);
+}
+
+
+/* ADD */
+
+.action-add {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+
+/* EDIT */
+
+.action-edit {
+    background: var(--surface-3);
+    color: var(--text-soft);
+}
+
+
+/* DELETE */
+
+.action-delete {
+    background: var(--bad-soft);
+    color: var(--bad);
+}
+
+
+/* BORROW */
+
+.action-borrow {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+
+/* RETURN */
+
+.action-return {
+    background: var(--ok-soft);
+    color: var(--ok);
+}
+
+
+/* DEFAULT */
+
+.action-default {
+    background: var(--surface-3);
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.log-description {
+    max-width: 450px;
+
+    color: var(--text-soft);
+
+    line-height: 1.45;
+
+    white-space: normal;
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.log-date {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    white-space: nowrap;
+}
+
+.log-date strong {
+    color: var(--text-soft);
+    font-size: 12px;
+}
+
+.log-date small {
+    color: var(--text-faint);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+.log-delete {
+    color: var(--bad);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.log-delete:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.logs-empty {
+    padding: 65px 20px;
+
+    text-align: center;
+
+    color: var(--text-muted);
+}
+
+.logs-empty-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.logs-empty h3 {
+    color: var(--text);
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.logs-empty p {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.logs-pagination {
+    padding: 17px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    border-top:
+        1px solid
+        var(--border);
+}
+
+.logs-pagination-info {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.logs-pagination-info strong {
+    color: var(--text);
+}
+
+.logs-pagination-links {
+    display: flex;
+    gap: 5px;
+}
+
+.logs-pagination-links a {
+    min-width: 34px;
+    height: 34px;
+
+    padding:
+        0
+        9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 5px;
+
+    color: var(--accent);
+
+    font-size: 12px;
+
+    text-decoration: none;
+
+    background: var(--surface);
+}
+
+.logs-pagination-links a:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+}
+
+.logs-pagination-links a.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .logs-filter-form {
+        align-items: stretch;
+    }
+
+    .logs-search {
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .logs-page {
+        padding: 0;
+    }
+
+    .logs-page-heading {
+        margin-bottom: 18px;
+    }
+
+    .logs-page-heading h1 {
+        font-size: 22px;
+    }
+
+    .logs-toolbar {
+        padding: 14px;
+    }
+
+    .logs-filter-form {
+        flex-direction: column;
+    }
+
+    .logs-search {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .logs-filter-select {
+        width: 100%;
+    }
+
+    .logs-button {
+        width: 100%;
+    }
+
+    .logs-card-header {
+        align-items: flex-start;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .logs-pagination {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
